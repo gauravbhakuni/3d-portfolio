@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,17 +53,16 @@ const AppShowcase = () => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="image-wrapper relative overflow-hidden">
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-          />
+          <img src={imageSrc} alt={imageAlt} />
           <motion.div
             className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 transition-all duration-300"
             style={{
-              backdropFilter: isHovered ? 'blur(5px)' : 'none', // Conditional backdrop-filter
+              backdropFilter: isHovered ? "blur(5px)" : "none", // Conditional backdrop-filter
             }}
             animate={{
-              backgroundColor: isHovered ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0)',
+              backgroundColor: isHovered
+                ? "rgba(0, 0, 0, 0.5)"
+                : "rgba(0, 0, 0, 0)",
             }}
           >
             <motion.a
@@ -78,39 +77,67 @@ const AppShowcase = () => {
           </motion.div>
         </div>
         {title && <h2>{title}</h2>}
-        {description && <p className="text-white-50 md:text-xl">{description}</p>}
+        {description && (
+          <p className="text-white-50 md:text-xl">{description}</p>
+        )}
       </div>
     );
   };
 
   return (
-    <div id="work" ref={sectionRef} className="app-showcase">
-      <div className="w-full">
-        <div className="showcaselayout">
-          <div ref={rydeRef} className="first-project-wrapper">
-            <ProjectCard
-              imageSrc="/images/project1.png"
-              imageAlt="Photography Portfolio"
-              title="The Visual Diary: My Photography Portfolio"
-              description="Explore a curated collection of my photographic work, specializing in capturing the unique beauty of elopements and beyond."
-              link="#" // Replace with actual link
-            />
-          </div>
+    <div className="mt-20">
+      <div
+        id="work"
+        ref={sectionRef}
+        className="marquee-wrapper w-full bg-black py-2"
+      >
+        <div className="marquee-inner">
+          <div className="marquee-track">{"Projects • ".repeat(90)}</div>
+          <div className="marquee-track">{"Projects • ".repeat(90)}</div>
+        </div>
+      </div>
 
-          <div className="project-list-wrapper overflow-hidden">
-            <ProjectCard
-              imageSrc="/images/project2.png"
-              imageAlt="Nike Shoe Destination"
-              title="Discover Your Next Pair: The Ultimate Nike Shoe Destination"
-              link="#"
-            />
-            <ProjectCard
-              imageSrc="/images/project3.png"
-              imageAlt="CodeCollab App"
-              title="CodeCollab: Code Together, Create Together"
-              description="Real-time collaborative coding platform with built-in chat and instant code execution for seamless teamwork."
-              link="#"
-            />
+      <div className="app-showcase">
+        <div className="w-full">
+          <div className="showcaselayout">
+            <div ref={rydeRef} className="first-project-wrapper space-y-4">
+              <ProjectCard
+                imageSrc="/images/project1.png"
+                imageAlt="Photography Portfolio"
+                title="The Visual Diary: My Photography Portfolio"
+                description="Explore a curated collection of my photographic work, specializing in capturing the unique beauty of elopements and beyond."
+                link="#" // Replace with actual link
+              />
+              <ProjectCard
+                imageSrc="/images/project3.png"
+                imageAlt="CodeCollab App"
+                title="CodeCollab: Code Together, Create Together"
+                description="Real-time collaborative coding platform with built-in chat and instant code execution for seamless teamwork."
+                link="#"
+              />
+            </div>
+            <div className="project-list-wrapper overflow-hidden">
+              <ProjectCard
+                imageSrc="/images/project2.png"
+                imageAlt="Nike Shoe Destination"
+                title="Discover Your Next Pair: The Ultimate Nike Shoe Destination"
+                link="#"
+              />
+              <ProjectCard
+                imageSrc="/images/project3.png"
+                imageAlt="CodeCollab App"
+                title="CodeCollab: Code Together, Create Together"
+                description="Real-time collaborative coding platform with built-in chat and instant code execution for seamless teamwork."
+                link="#"
+              />
+              <ProjectCard
+                imageSrc="/images/project3.png"
+                imageAlt="CodeCollab App"
+                title="CodeCollab: Code Together, Create Together"
+                description="Real-time collaborative coding platform with built-in chat and instant code execution for seamless teamwork."
+                link="#"
+              />
+            </div>
           </div>
         </div>
       </div>
